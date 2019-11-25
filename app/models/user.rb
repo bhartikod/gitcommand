@@ -13,6 +13,7 @@ def self.new_with_session(params, session)
 end
 
 def self.from_omniauth(auth)
+  debugger
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
